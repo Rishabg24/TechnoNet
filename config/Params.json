@@ -1,0 +1,315 @@
+{
+    "__comment__": "Mass units are in solar masses and radius in solar radii. Temperature is in Kelvin.",
+    "star type": {
+        "G_class": {
+            "mass": {
+                "type": "uniform",
+                "min": 0.9,
+                "max": 1.06
+            },
+            "radius": {
+                "type": "uniform",
+                "min": 0.8,
+                "max": 1.1
+            },
+            "Teff": {
+                "type": "uniform",
+                "min": 5380,
+                "max": 5930
+            },
+            "LimbDarkening": {
+                "source": "Claret2017_table25",
+                "band": "TESS",
+                "FeH": 0.0,
+                "vturb_kms": 2.0,
+                "model_uncertainty_sigma": 0.02
+            }
+        },
+        "K_class": {
+            "mass": {
+                "type": "uniform",
+                "min": 0.59,
+                "max": 0.88
+            },
+            "radius": {
+                "type": "uniform",
+                "min": 0.6,
+                "max": 0.83
+            },
+            "Teff": {
+                "type": "uniform",
+                "min": 3930,
+                "max": 5270
+            },
+            "LimbDarkening": {
+                "source": "Claret2017_table25",
+                "band": "TESS",
+                "FeH": 0.0,
+                "vturb_kms": 2.0,
+                "model_uncertainty_sigma": 0.02
+            }
+        },
+        "M_class": {
+            "mass": {
+                "type": "uniform",
+                "min": 0.44,
+                "max": 0.57
+            },
+            "radius": {
+                "type": "uniform",
+                "min": 0.446,
+                "max": 0.588
+            },
+            "Teff": {
+                "type": "uniform",
+                "min": 3560,
+                "max": 3850
+            },
+            "LimbDarkening": {
+                "source": "Claret2017_table25",
+                "band": "TESS",
+                "FeH": 0.0,
+                "vturb_kms": 2.0,
+                "model_uncertainty_sigma": 0.02
+            }
+        },
+        "White_Dwarf": {
+            "mass": {
+                "type": "normal",
+                "mean": 0.6,
+                "std": 0.05,
+                "min": 0.5,
+                "max": 0.7
+            },
+            "radius": {
+                "type": "uniform",
+                "min": 0.0152,
+                "max": 0.0170
+            },
+            "Teff": {
+                "type": "uniform",
+                "min": 4000,
+                "max": 10000
+            },
+            "LimbDarkening": {
+                "source": "Claret2020_WD",
+                "band": "TESS",
+                "composition": "DA",
+                "model_uncertainty_sigma": 0.02,
+                "extrapolate": false
+            }
+        }
+    },
+    "swarm_archetypes": {
+        "Thin_Ring": {
+            "collector_radius_m": {
+                "type": "delta",
+                "value": 1000
+            },
+            "optical_tau": 1.0,
+            "a_AU": {
+                "type": "delta",
+                "value": 0.5
+            },
+            "eccentricity": {
+                "type": "delta",
+                "value": 0.0
+            },
+            "inclination_deg": {
+                "type": "normal",
+                "mu": 0,
+                "sigma": 0.1
+            },
+            "Omega_deg": {
+                "type": "uniform",
+                "min": 0,
+                "max": 360
+            },
+            "omega_deg": {
+                "type": "uniform",
+                "min": 0,
+                "max": 360
+            },
+            "M0_deg": {
+                "type": "uniform",
+                "min": 0,
+                "max": 360
+            }
+        },
+        "Multi_Ring": {
+            "N_particles": 20000,
+            "collector_radius_m": {
+                "type": "delta",
+                "value": 1000
+            },
+            "optical_tau": 1.0,
+            "rings": [
+                {
+                    "a_AU": {
+                        "type": "delta",
+                        "value": 0.5
+                    },
+                    "inclination_deg": {
+                        "type": "delta",
+                        "value": 0
+                    }
+                },
+                {
+                    "a_AU": {
+                        "type": "delta",
+                        "value": 0.7
+                    },
+                    "inclination_deg": {
+                        "type": "delta",
+                        "value": 5
+                    }
+                },
+                {
+                    "a_AU": {
+                        "type": "delta",
+                        "value": 0.9
+                    },
+                    "inclination_deg": {
+                        "type": "delta",
+                        "value": 15
+                    }
+                }
+            ],
+            "eccentricity": {
+                "type": "delta",
+                "value": 0.0
+            },
+            "Omega_deg": {
+                "type": "uniform",
+                "min": 0,
+                "max": 360
+            },
+            "omega_deg": {
+                "type": "uniform",
+                "min": 0,
+                "max": 360
+            },
+            "M0_deg": {
+                "type": "uniform",
+                "min": 0,
+                "max": 360
+            }
+        },
+        "Resonant_Clumps": {
+            "N_particles": 10000,
+            "collector_radius_m": {
+                "type": "delta",
+                "value": 1000
+            },
+            "optical_tau": 1.0,
+            "a_AU": {
+                "type": "delta",
+                "value": 0.63
+            },
+            "eccentricity": {
+                "type": "normal",
+                "mu": 0.02,
+                "sigma": 0.01
+            },
+            "inclination_deg": {
+                "type": "normal",
+                "mu": 0,
+                "sigma": 0.5
+            },
+            "Omega_deg": {
+                "type": "uniform",
+                "min": 0,
+                "max": 360
+            },
+            "omega_deg": {
+                "type": "uniform",
+                "min": 0,
+                "max": 360
+            },
+            "M0_deg": {
+                "type": "clusters",
+                "centers_deg": [
+                    60,
+                    180,
+                    300
+                ],
+                "sigma_deg": 10
+            }
+        },
+        "Diffuse_Cloud": {
+            "N_particles": 50000,
+            "collector_radius_m": {
+                "type": "delta",
+                "value": 500
+            },
+            "optical_tau": 0.5,
+            "a_AU": {
+                "type": "uniform",
+                "min": 0.2,
+                "max": 1.5
+            },
+            "eccentricity": {
+                "type": "uniform",
+                "min": 0.0,
+                "max": 0.6
+            },
+            "inclination_deg": {
+                "type": "uniform",
+                "min": 0,
+                "max": 30
+            },
+            "Omega_deg": {
+                "type": "uniform",
+                "min": 0,
+                "max": 360
+            },
+            "omega_deg": {
+                "type": "uniform",
+                "min": 0,
+                "max": 360
+            },
+            "M0_deg": {
+                "type": "uniform",
+                "min": 0,
+                "max": 360
+            }
+        },
+        "Eccentric_Inclined": {
+            "N_particles": 10000,
+            "collector_radius_m": {
+                "type": "delta",
+                "value": 1000
+            },
+            "optical_tau": 1.0,
+            "a_AU": {
+                "type": "delta",
+                "value": 0.5
+            },
+            "eccentricity": {
+                "type": "uniform",
+                "min": 0.1,
+                "max": 0.5
+            },
+            "inclination_deg": {
+                "type": "uniform",
+                "min": 5,
+                "max": 30
+            },
+            "Omega_deg": {
+                "type": "uniform",
+                "min": 0,
+                "max": 360
+            },
+            "omega_deg": {
+                "type": "uniform",
+                "min": 0,
+                "max": 360
+            },
+            "M0_deg": {
+                "type": "uniform",
+                "min": 0,
+                "max": 360
+            }
+        }
+    }
+}
