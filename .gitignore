@@ -20,3 +20,5 @@ dyson_positives
 dyson_positives_new
 final_training_data_TCN_train
 final_training_data_TCN_val
+.vscode/
+checkpoints/
