@@ -1,17 +1,16 @@
-# Swarm Transit Survey (STS) — Research Codebase
+# TechnoNet — Research Codebase
 
 Overview
 --------
-# TechnoNet 
 
-TechnoNet is a project to evaluate the ability of ML models to detect Dyson Swarms from light curve data. There are two ML models: A Temporal Autoencoder and a Temporal Convolutional Network. To gather Dyson Swarm Light curve data, a novel simulation algorithm is implemented using the REBOUND N-body integrator from Hanno Rein and a Monte Carlo ray-tracing algorithm from Bhowmick & Khaire, 2024.
+TechnoNet is a project to evaluate the ability of ML models to detect Dyson Swarms from light curve data. There are two ML models: A Temporal Autoencoder and a Temporal Convolutional Network. To gather Dyson Swarm Light curve data, a novel simulation algorithm is implemented using the REBOUND N-body integrator developed by Hanno Rein and a Monte Carlo ray-tracing algorithm inspired by Bhowmick & Khaire, 2024.
 
 Goals
 -----
 - Provide reproducible pipelines for generating synthetic light curves with injected signals.
 - Run swarm/ring simulations and compute observational results.
 - Train and evaluate classifiers and signal detectors (TCN and other models).
-- Organize simulation parameters, results, and model checkpoints for reproducible research.
+- Organize simulation parameters, results, and model checkpoints.
 
 Repository layout
 -----------------
@@ -54,7 +53,7 @@ source .venv/bin/activate
 2. Install dependencies (recommended). If the project does not include a `requirements.txt`, install the common scientific packages used by this repo:
 
 ```bash
-pip install numpy scipy matplotlib pandas tqdm h5py
+pip install numpy scipy matplotlib pandas tqdm h5py jax astroquery lightkurve rebound scikit-learn
 pip install torch torchvision  # if using GPU, install the appropriate CUDA build
 ```
 
@@ -146,20 +145,7 @@ Where to start (recommended)
 3. Run a small simulation: `python Simulation/sim.py --config config/Params.json`.
 4. Visualize outputs with `python swarm_visualizer.py`.
 
-Contributing
-------------
-Contributions are welcome. Please follow these guidelines:
-
-- Open issues to discuss larger changes before implementing them.
-- Add small, focused pull requests with tests or minimal examples showing the change.
-- Keep experiments and large datasets outside the main history (use the `results/` and `checkpoints/` directories and consider using Git LFS for large artifacts).
-
 License & contact
 -----------------
-This repository does not include an explicit license file. Add an appropriate `LICENSE` file (for example, MIT or CC-BY) before distributing. For questions about the code, contact the repository maintainer or the original research authors.
+This repository is licensed under the MIT License. See the `LICENSE` file for details. For questions about the code, contact the repository maintainer or the original research authors.
 
-Acknowledgements
-----------------
-This codebase grew from experiments combining synthetic-data generation, transit-signal injection, and classifier development. If you reuse or build on this work, please cite the corresponding research publication and credit collaborators.
-
-README created on: May 22, 2026

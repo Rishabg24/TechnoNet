@@ -1,0 +1,13 @@
+numpy
+scipy
+matplotlib
+pandas
+tqdm
+h5py
+jax
+astroquery
+lightkurve
+rebound
+scikit-learn
+torch
+torchvision
