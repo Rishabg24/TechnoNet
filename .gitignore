@@ -22,3 +22,4 @@ final_training_data_TCN_train
 final_training_data_TCN_val
 .vscode/
 checkpoints/
+tae_sanity_check.png
