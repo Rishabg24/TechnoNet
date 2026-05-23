@@ -9,7 +9,10 @@ warnings.filterwarnings('ignore')
 from astroquery.mast import Observations
 from astropy.table import Table
 
+'''
+Preprocessing script to download and prepare TESS light curves for TechnoNet.
 
+'''
 def normalize_light_curve(lc):
     """
     Normalize a TESS light curve and apply quality filtering.
