@@ -388,7 +388,6 @@ if TAE_TRAIN:
                 print()
         
         else:
-            # No validation - use training loss (original behavior)
             print(f"Epoch {epoch:2d}/{EPOCHS} | Train: {avg_train_loss:.6f}", end="")
             
             if avg_train_loss < best_val_loss:
@@ -438,8 +437,6 @@ if TAE_TRAIN:
     print(f"  Models saved in: {SAVE_DIR.relative_to(Path.cwd())}/")
     print(f"  Best model: best_TAE_model.pth")
     print("=" * 60 + "\n")
-
-# Replace your entire TCN_TRAIN section with this:
 
 if TCN_TRAIN:
     print("\n" + "=" * 60)
