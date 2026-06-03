@@ -16,40 +16,9 @@ def make_multi_ring(
     star_mass=1.0,
     seed=None,
     random_ring_orientations=False,
-    inter_ring_tilt_deg=(0.5, 3.0)  # MUCH SMALLER! Key change
+    inter_ring_tilt_deg=(0.5, 3.0)  # MUCH SMALLER
 ):
-    """
-    Multi-ring debris disk with SMALL inter-ring tilts for deep transits.
     
-    KEY INSIGHT FOR TRANSIT DEPTH:
-    ===============================
-    To get significant flux drops (10-50%), you need:
-    
-    1. High base inclination (85-89°) - nearly edge-on
-    2. SMALL inter-ring tilts (0.5-3°) - keeps rings edge-on
-    3. Small within-ring dispersion (1-3°)
-    4. Sufficient particle density
-    
-    WHY SMALL TILTS?
-    ----------------
-    At 87° inclination, a ring is edge-on with maximum projected area.
-    - Tilt by 1°  → still 86° → still mostly edge-on → good occultation
-    - Tilt by 20° → now 67° → much more face-on → tiny occultation
-    
-    A ring at 60° inclination has ~50% the projected area of an edge-on ring!
-    
-    REALISTIC ARCHITECTURE:
-    -----------------------
-    Real circumstellar disks show:
-    - Warped disks: 0.5-2° tilts between annuli
-    - Misaligned rings: 2-5° differences (still rare)
-    - Highly inclined rings: >10° (very rare, dramatic events)
-    
-    For transit modeling, use inter_ring_tilt_deg=(0.5, 3.0) for:
-    - Coherent nearly edge-on geometry
-    - Variable transit depths from slight viewing angle differences
-    - Realistic disk physics
-    """
     sim = rb.Simulation()
     sim.units = ("AU", "days", "Msun")
     sim.add(m=star_mass)
@@ -58,7 +27,7 @@ def make_multi_ring(
     if seed is not None:
         np.random.seed(seed)
 
-    # Track inclination as we build - CRITICAL FOR TRANSIT DEPTH
+    # Track inclination as we build 
     current_inc = np.radians(starting_inclination)
     current_Omega = np.random.uniform(0, 2 * np.pi)
     current_omega = np.random.uniform(0, 2 * np.pi)
@@ -88,7 +57,7 @@ def make_multi_ring(
                 tilt_direction = np.random.uniform(0, 2 * np.pi)
                 
                 # SMALL perturbation to inclination (not additive!)
-                # Use sine for small angle approximation
+                # With small angle approx. 
                 delta_inc = tilt_rad * np.sin(tilt_direction)
                 ring_mean_inc = current_inc + delta_inc
                 
@@ -160,7 +129,7 @@ def make_multi_ring_enhanced(
     Keep all inclinations near edge-on (85-89°):
     
     sim = make_multi_ring_enhanced(
-        ring_inclinations_deg=[87, 86.5, 88, 87.2, 86],  # All edge-on!
+        ring_inclinations_deg=[87, 86.5, 88, 87.2, 86],  # All edge-on. 
         ...
     )
     """
@@ -251,8 +220,6 @@ def estimate_transit_depth(
     return normalized_flux
 
 
-# REMOVE THE HARDCODED TEST AT THE END OF multi_ring.py
-# Instead, add this to your sim.py AFTER generating parameters:
 if __name__ == "__main":
     print(estimate_transit_depth(
         num_particles=40000,  # 4 rings × 10000
